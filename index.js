@@ -76,6 +76,23 @@ function viteCustomIconsResolver (options){
 
     const tmpFolderPath = path.join(__dirname, 'tmp-icon-components')
 
+    // Clear tmp-icon-components folder from '.vue' files
+    if ( componentCounter === 0 ) {
+      componentCounter++
+
+      let files = fs.readdirSync(tmpFolderPath)
+
+      for (const file of files) {
+        if ( !file.includes('.') ) {
+          return
+        }
+
+        if ( file.slice(file.lastIndexOf('.')) === '.vue' ) {
+          fs.unlinkSync(path.join(tmpFolderPath, file))
+        }
+      }
+    }
+
     let nameWithoutPrefix = name
 
     if ( prefix ) {

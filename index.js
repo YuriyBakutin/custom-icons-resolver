@@ -1,4 +1,5 @@
 const fs = require('fs')
+const path = require('path')
 
 const firstLetterToLowerCase = (word) => {
   let Word = word[0].toLowerCase()
@@ -67,8 +68,12 @@ function viteCustomIconsResolver (options){
     iconsFolderPath,
   } = { ...defaultOptions, ...options }
 
+  let componentCounter = 0
+
   return (name) => {
     // Note: even if the name of icon component was specified in kebab, it is always passed pre-converted to pascal
+
+    const tmpFolderPath = path.join(__dirname, 'tmp-icon-components')
 
     let nameWithoutPrefix = name
 
@@ -87,7 +92,7 @@ function viteCustomIconsResolver (options){
     }
 
     // Icon path with file name in PascalCase
-    const iconPath = `${iconsFolderPath}/${nameWithoutPrefix}.svg`
+    const iconPath = path.join(iconsFolderPath, `${nameWithoutPrefix}.svg`)
     let svgContent
 
     try { // Search for a file by name in the PascalCase
@@ -98,7 +103,7 @@ function viteCustomIconsResolver (options){
         return null
       }
 
-      const iconPathInCamel = `${iconsFolderPath}/${firstLetterToLowerCase(nameWithoutPrefix)}.svg`
+      const iconPathInCamel = path.join(iconsFolderPath, `${firstLetterToLowerCase(nameWithoutPrefix)}.svg`)
 
       try { // Search for a file by name in the camelCase
         svgContent = fs.readFileSync(iconPathInCamel, 'utf8')
@@ -108,7 +113,7 @@ function viteCustomIconsResolver (options){
           return null
         }
 
-        const iconPathKebab = `${iconsFolderPath}/${pascalToKebab(nameWithoutPrefix)}.svg`
+        const iconPathKebab = path.join(iconsFolderPath, `${pascalToKebab(nameWithoutPrefix)}.svg`)
 
         try { // Search for a file by name in the kebab-case
           svgContent = fs.readFileSync(iconPathKebab, 'utf8')
@@ -127,7 +132,6 @@ function viteCustomIconsResolver (options){
 ${svgContent}
 </template>
 `
-    const tmpFolderPath = __dirname + '/tmp-icon-components'
     const componentPath = `${tmpFolderPath}/${nameWithoutPrefix}.vue`
 
     try {

@@ -71,7 +71,8 @@ function viteCustomIconsResolver (options){
   let componentCounter = 0
 
   return (name) => {
-    // Note: even if the name of icon component was specified in kebab, it is always passed pre-converted to pascal
+    // Note: even if the name of icon component was specified in kebab,
+    // it is always passed pre-converted to pascal
 
     const tmpFolderPath = path.join(__dirname, 'tmp-icon-components')
 
@@ -99,8 +100,7 @@ function viteCustomIconsResolver (options){
       svgContent = fs.readFileSync(iconPath, 'utf8')
     } catch(error) { // File in PascalCase not found
       if ( error.code !== 'ENOENT' ) {
-        console.error('custom-icons-resolver error:', error)
-        return null
+        throw error
       }
 
       const iconPathInCamel = path.join(iconsFolderPath, `${firstLetterToLowerCase(nameWithoutPrefix)}.svg`)
@@ -109,8 +109,7 @@ function viteCustomIconsResolver (options){
         svgContent = fs.readFileSync(iconPathInCamel, 'utf8')
       } catch(error) { // File in camelCase not found
         if ( error.code !== 'ENOENT' ) {
-          console.error('custom-icons-resolver error:', error)
-          return null
+          throw error
         }
 
         const iconPathKebab = path.join(iconsFolderPath, `${pascalToKebab(nameWithoutPrefix)}.svg`)
@@ -119,7 +118,7 @@ function viteCustomIconsResolver (options){
           svgContent = fs.readFileSync(iconPathKebab, 'utf8')
         } catch(error) { // File in kebab-case not found
           if ( error.code !== 'ENOENT' ) {
-            console.error('custom-icons-resolver error:', error)
+            throw error
           }
 
           return null
@@ -133,13 +132,7 @@ ${svgContent}
 </template>
 `
     const componentPath = `${tmpFolderPath}/${nameWithoutPrefix}.vue`
-
-    try {
-      fs.writeFileSync(componentPath, componentCode)
-    } catch ( error ) {
-      console.error('custom-icons-resolver error:', error)
-      return null
-    }
+    fs.writeFileSync(componentPath, componentCode)
 
     return componentPath
   }

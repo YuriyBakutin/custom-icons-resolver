@@ -1,0 +1,18 @@
+{
+  "name": "vite-custom-icons-resolver",
+  "version": "1.0.0",
+  "description": "Resolver for the Vite config file is designed to create elementary vue components from custom svg icons.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/YuriyBakutin/vite-custom-icons-resolver"
+  },
+  "author": "Yuriy Bakutin <yuriybakutin@gmail.com>",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "homepage": "https://github.com/YuriyBakutin/vite-custom-icons-resolver",
+  "bugs": "https://github.com/YuriyBakutin/vite-custom-icons-resolver/issues",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}

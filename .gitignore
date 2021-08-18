@@ -1,0 +1,3 @@
+node_modules
+/tmp-icon-components/*.vue
+dist

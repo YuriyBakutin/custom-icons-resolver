@@ -2,7 +2,7 @@
 
 Resolver for the Vite config file is designed to create elementary vue components from custom svg icons.
 
-Vue 3 and Vue 2 versions are supported.
+Vue 3 and Vue 2 are supported.
 
 _Vue custom component-icon using_ `vite-custom-icons-resolver` _examples:_
 
@@ -28,8 +28,10 @@ Install the plugin `vite-custom-icons-resolver`
 
 Use with [vite-plugin-components](https://github.com/antfu/vite-plugin-components) (`>= v0.5.5`)
 
+Vue 3
+
 ```js
-// vite.config.js
+// vite.config.js (for Vue 3)
 import Vue from '@vitejs/plugin-vue'
 import Components from 'vite-plugin-components'
 import { viteCustomIconsResolver } from 'vite-custom-icons-resolver'
@@ -42,6 +44,30 @@ export default {
         viteCustomIconsResolver({
           prefix: '', // 'i' by default
           customIconsFolder: 'src/svg-icons', // 'src/icons' by default
+        }),
+      ],
+    }),
+  ],
+}
+```
+
+Vue 2
+Vita supports Vue 2 with a `vite-plugin-vue2` plugin.
+
+```js
+// vite.config.js (for Vue 2)
+import { createVuePlugin } from 'vite-plugin-vue2'
+import Components from 'vite-plugin-components'
+import { viteCustomIconsResolver } from 'vite-custom-icons-resolver'
+
+export default {
+  plugins: [
+    createVuePlugin(),
+    Components({
+      customComponentResolvers: [
+        viteCustomIconsResolver({
+          prefix: '', // 'i' by default
+          iconsFolderPath: 'src/svg-icons', // 'src/icons' by default
         }),
       ],
     }),

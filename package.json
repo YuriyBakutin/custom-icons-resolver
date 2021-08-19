@@ -1,6 +1,6 @@
 {
   "name": "vite-custom-icons-resolver",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Resolver for the Vite config file to create elementary vue components from custom svg icons.",
   "license": "MIT",
   "repository": {

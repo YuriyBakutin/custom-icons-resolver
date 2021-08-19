@@ -1,7 +1,7 @@
 {
   "name": "vite-custom-icons-resolver",
-  "version": "1.0.1",
-  "description": "Resolver for the Vite config file to create elementary vue components from custom svg icons.",
+  "version": "1.0.0",
+  "description": "Resolver for the Vite config file is designed to create elementary vue components from custom svg icons.",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -13,6 +13,13 @@
   "homepage": "https://github.com/YuriyBakutin/vite-custom-icons-resolver",
   "bugs": "https://github.com/YuriyBakutin/vite-custom-icons-resolver/issues",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npm -C examples/vue3 run test; npm -C examples/vue3 run test",
+    "install:examplesVue2": "cd examples/vue2 && npm install",
+    "install:examplesVue3": "cd examples/vue3 && npm install",
+    "installAll": "cd examples/vue2 && npm install && cd ../../ && cd examples/vue3 && npm install",
+    "examplesVue2:dev": "npm -C examples/vue2 run dev",
+    "examplesVue2:build": "npm -C examples/vue2 run build",
+    "examplesVue3:dev": "npm -C examples/vue3 run dev",
+    "examplesVue3:build": "npm -C examples/vue3 run build"
   }
 }

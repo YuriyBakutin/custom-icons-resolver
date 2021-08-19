@@ -2,6 +2,8 @@
 
 Resolver for the Vite config file is designed to create elementary vue components from custom svg icons.
 
+Vue 3 and Vue 2 versions are supported.
+
 _Vue custom component-icon using_ `vite-custom-icons-resolver` _examples:_
 
 ![Vue custom component-icon examples](img/svg-components.png)
@@ -39,11 +41,10 @@ export default {
       customComponentResolvers: [
         viteCustomIconsResolver({
           prefix: '', // 'i' by default
-          customIconsFolder: 'src/icons', // by default
+          customIconsFolder: 'src/svg-icons', // 'src/icons' by default
         }),
       ],
     }),
-    ViteIcons(),
   ],
 }
 ```
@@ -96,6 +97,6 @@ After these transformations of svg document you can use the css `color` property
 
 To optimize the resulting svg file (compression, removal of unnecessary information), you can use the [_svgo_](https://github.com/svg/svgo) utility.
 
-##Source of inspiration
+## Source of inspiration
 
 The source of inspiration for writing this module, which creates components from custom svg icons, was the technology of [_vite-plugin-icons_](https://www.npmjs.com/package/vite-plugin-icons) with [_iconify_](https://icon-sets.iconify.design/) for free icon sets.

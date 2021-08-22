@@ -4,15 +4,13 @@ Resolver for the Vite config file is designed to create elementary vue component
 
 Vue 3 and Vue 2 are supported.
 
-_Vue custom component-icon using_ `vite-custom-icons-resolver` _examples:_
+_Examples of Vue custom component-icon using_ `vite-custom-icons-resolver`:
 
 ![Vue custom component-icon examples](img/svg-components.png)
 
-`vita-custom-icons-resolver` works as a tool for configuring Vite using a `vite.config.js` file. To do this, it needs the npm [_vite-plugin-components_](https://www.npmjs.com/package/vite-plugin-components) module, which should be installed separately.
-
 ## Install
 
-Before installing `vite-custom-icons-resolver`, you need to install [_vite-plugin-components_](https://www.npmjs.com/package/vite-plugin-components), if it is not already installed.
+Before installing `vite-custom-icons-resolver`, you must install [_vite-plugin-components_](https://www.npmjs.com/package/vite-plugin-components), if it is not already installed.
 
 ```bash
     npm i -D vite-plugin-components
@@ -28,6 +26,8 @@ Install the plugin `vite-custom-icons-resolver`
 
 Use with [vite-plugin-components](https://github.com/antfu/vite-plugin-components) (`>= v0.5.5`)
 
+`vite-custom-icons-resolver` itself works as a parameter of the `vue-plugins-components` and does not depend on whether the 2nd or 3rd version of Vue is used.
+
 Vue 3
 
 ```js
@@ -42,7 +42,7 @@ export default {
     Components({
       customComponentResolvers: [
         viteCustomIconsResolver({
-          prefix: '', // 'i' by default
+          prefix: 'custom-icon', // 'i' by default
           customIconsFolder: 'src/svg-icons', // 'src/icons' by default
         }),
       ],
@@ -66,7 +66,7 @@ export default {
     Components({
       customComponentResolvers: [
         viteCustomIconsResolver({
-          prefix: '', // 'i' by default
+          prefix: 'custom-icon', // 'i' by default
           iconsFolderPath: 'src/svg-icons', // 'src/icons' by default
         }),
       ],
@@ -77,9 +77,9 @@ export default {
 
 `viteCustomIconsResolver` has two optional parameters:
 
-`prefix` has a default value of `'i'`.
+- `prefix` has a default value of `'i'`. It can be an empty string.
 
-`customIconsFolder` specifies the path to the folder  where the svg icons files are located, and by default points to `src/icons` folder.
+- `customIconsFolder` specifies the path to the folder  where the svg icons files are located, and by default points to `src/icons` folder.
 
 ## Requirements for custom svg components
 
@@ -89,23 +89,31 @@ Custom svg components are global. They should not be registered and imported in 
 
 ## Requirements for svg files
 
-As mentioned above, each custom svg file must be placed in the folder specified in the `customIconsFolder` parameter in the vite.config.js file or, if this parameter is skipped, in the `src/icons` folder by default.
+As mentioned above, each custom svg file must be placed in the folder specified via `customIconsFolder` parameter in the `vite.config.js` file or, if this parameter is skipped, in the `src/icons` folder by default.
 
 The name of custom svg file can be in the `PascalCase`, `camelCase` or `kebab-case`, and must correspond to the name of component without a prefix.
 
-Note that icons mount to page as inline svg. `vite-custom-icons-resolver` wrap svg content in `<template>` tag and saves the resulting component in the file with extension `.vue` in special service folder.
+Note that icons are mounted to page as inline `svg`. `vite-custom-icons-resolver` wraps svg content in `<template>` tag and saves the resulting component in the file with extension `.vue` in special service folder.
 
 __Note__: Inline svg must not contain declaration tag
 `<?xml ... ?>`
 This tag, if it is present in custom svg file, is necessary to delete manually.
 
-The svg in the component should be displayed as displayed in file as it. It is necessary to additionally think over the system for managing the size and color of the icon.
+### Managing size and color
 
-In particular, if you specify `width` and `height` equal to `1em` in the svg header, then the icon size can be controlled using the css `font-size` property.
+The svg in the component will be displayed exactly as in the file.
+
+If you need to manage the size or color, you should prepare `svg` document for this.
+
+#### Size
+
+To control icon size using the css `font-size` property you should set the value of the attributes `width` and `height` equal to `1em` in the svg header.
 
 ```xml
 <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" ...>
 ```
+
+#### Color
 
 To control the color of the svg icon using css, you need to prepare the svg document in a certain way (this applies only to single-color icons).
 

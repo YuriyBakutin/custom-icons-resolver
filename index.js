@@ -66,7 +66,7 @@ function viteCustomIconsResolver (options){
   const {
     prefix,
     iconsFolderPath,
-  } = { ...defaultOptions, ...options }
+  } = { ...defaultOptions, ...(options ? options : {}) }
 
   let componentCounter = 0
 

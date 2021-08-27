@@ -10,10 +10,7 @@ export default defineConfig({
     ViteComponents({
       globalComponentsDeclaration: true,
       customComponentResolvers: [
-        viteCustomIconsResolver({
-          prefix: 'custom-icon',
-          iconsFolderPath: 'src/icons-camel-without-prefix'
-        }),
+        viteCustomIconsResolver(),
       ],
     }),
   ]

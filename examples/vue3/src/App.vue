@@ -3,9 +3,9 @@
     style="color: brown; font-size: 100px;"
   >
     <span style="color: rgb(88, 88, 88); font-size: 60px; margin-right: 40px;">
-      <custom-icon-cat-head />
+      <i-cat-head />
     </span>
-    <custom-icon-dog-head />
+    <i-dog-head />
   </div>
 </template>
 

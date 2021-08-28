@@ -16,11 +16,11 @@
   "scripts": {
     "test": "npm -C examples/vue3 run test; npm -C examples/vue3 run test",
     "install:examplesVue2": "cd examples/vue2 && npm install",
-    "install:examplesVue3": "cd examples/vue3 && npm install",
-    "installAll": "cd examples/vue2 && npm install && cd ../../ && cd examples/vue3 && npm install",
+    "install:examplesVue3": "cd examples/vue3/icons-kebab-with-prefix && npm install",
+    "installAll": "cd examples/vue2 && npm install && cd ../../ && cd examples/vue3/icons-camel-with-prefix && npm install",
     "examplesVue2:dev": "npm -C examples/vue2 run dev",
     "examplesVue2:build": "npm -C examples/vue2 run build",
-    "examplesVue3:dev": "npm -C examples/vue3 run dev",
-    "examplesVue3:build": "npm -C examples/vue3 run build"
+    "examplesVue3:dev": "npm -C examples/vue3/icons-kebab-with-prefix run dev",
+    "examplesVue3:build": "npm -C examples/vue3/icons-kebab-with-prefix run build"
   }
 }

@@ -15,6 +15,17 @@ export default defineConfig({
           iconsFolderPath: 'src/svg-icons',
         }),
       ],
-    }),
-  ]
+    })
+  ],
+  build: {
+    minify: false,
+    rollupOptions: {
+      output: {
+        manualChunks: undefined,
+        file: 'dist/bundle.js',
+        format: 'iife',
+        dir: null,
+      },
+    },
+  },
 })

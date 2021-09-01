@@ -74,21 +74,36 @@ function viteCustomIconsResolver (options){
     // Note: even if the name of icon component was specified in kebab,
     // it is always passed pre-converted to pascal
 
-    const tmpFolderPath = path.join(__dirname, 'tmp-icon-components')
+    const componentsFolderPath = path.join(iconsFolderPath, 'icon-components')
 
     // Pre-cleaning of tmp-icon-components folder from '.vue' files
     if ( componentCounter === 0 ) {
       componentCounter++
 
-      let files = fs.readdirSync(tmpFolderPath)
+      let files
+      let tmpFolderExists = true
 
-      for (const file of files) {
-        if ( !file.includes('.') ) {
-          return
+      try { // Checking the folder for existence
+        files = fs.readdirSync(componentsFolderPath)
+      } catch(error) {
+        if ( error.code !== 'ENOENT' ) { // The folder does not exist
+          throw error
+        } else {
+          tmpFolderExists = false
+
+          fs.mkdirSync(componentsFolderPath)
         }
+      }
 
-        if ( file.slice(file.lastIndexOf('.')) === '.vue' ) {
-          fs.unlinkSync(path.join(tmpFolderPath, file))
+      if ( tmpFolderExists ) {
+        for (const file of files) {
+          if ( !file.includes('.') ) {
+            return
+          }
+
+          if ( file.slice(file.lastIndexOf('.')) === '.vue' ) {
+            fs.unlinkSync(path.join(componentsFolderPath, file))
+          }
         }
       }
     }
@@ -145,13 +160,16 @@ function viteCustomIconsResolver (options){
 
     const componentCode = `
 <template>
+<!-- This file was created automatically. You should not make changes to it! -->
 ${svgContent}
 </template>
 `
-    const componentPath = `${tmpFolderPath}/${nameWithoutPrefix}.vue`
+
+    // const componentPath = `${componentsFolderPath}/${nameWithoutPrefix}.vue`
+    const componentPath = path.join(componentsFolderPath, `${nameWithoutPrefix}.vue`)
     fs.writeFileSync(componentPath, componentCode)
 
-    return componentPath
+    return '/' + componentPath
   }
 }
 

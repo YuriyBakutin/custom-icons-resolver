@@ -4,21 +4,21 @@ Resolver for the Vite config file is designed to create elementary vue component
 
 Vue 3 and Vue 2 are supported.
 
-_Examples of Vue custom component-icon using_ `vite-custom-icons-resolver`:
+*Examples of Vue custom component-icon using* `vite-custom-icons-resolver`:
 
 ![Vue custom component-icon examples](img/svg-components.png)
 
 ## Install
 
-Before installing `vite-custom-icons-resolver`, you must install [_vite-plugin-components_](https://www.npmjs.com/package/vite-plugin-components), if it is not already installed.
+Before installing `vite-custom-icons-resolver`, you must install [*vite-plugin-components*](https://www.npmjs.com/package/vite-plugin-components), if it is not already installed.
 
-```bash
+``` bash
     npm i -D vite-plugin-components
 ```
 
 Install the plugin `vite-custom-icons-resolver`
 
-```bash
+``` bash
     npm i -D vite-custom-icons-resolver
 ```
 
@@ -30,7 +30,7 @@ Use with [vite-plugin-components](https://github.com/antfu/vite-plugin-component
 
 Vue 3
 
-```js
+``` js
 // vite.config.js (for Vue 3)
 import Vue from '@vitejs/plugin-vue'
 import Components from 'vite-plugin-components'
@@ -54,7 +54,7 @@ export default {
 Vue 2
 Vita supports Vue 2 with a `vite-plugin-vue2` plugin.
 
-```js
+``` js
 // vite.config.js (for Vue 2)
 import { createVuePlugin } from 'vite-plugin-vue2'
 import Components from 'vite-plugin-components'
@@ -77,9 +77,8 @@ export default {
 
 `viteCustomIconsResolver` has two optional parameters:
 
-- `prefix` has a default value of `'i'`. It can be an empty string.
-
-- `customIconsFolder` specifies the path to the folder  where the svg icons files are located, and by default points to `src/icons` folder.
+* `prefix` has a default value of `'i'`. It can be an empty string.
+* `customIconsFolder` specifies the path to the folder where the svg icons files are located, and by default points to `src/icons` folder.
 
 ## Requirements for custom svg components
 
@@ -95,7 +94,7 @@ The name of custom svg file can be in the `PascalCase`, `camelCase` or `kebab-ca
 
 Note that icons are mounted to page as inline `svg`. `vite-custom-icons-resolver` wraps svg content in `<template>` tag and saves the resulting component in the file with extension `.vue` in special service folder.
 
-__Note__: Inline svg must not contain declaration tag
+**Note**: Inline svg must not contain declaration tag
 `<?xml ... ?>`
 This tag, if it is present in custom svg file, is necessary to delete manually.
 
@@ -109,7 +108,7 @@ If you need to manage the size or color, you should prepare `svg` document for t
 
 To control icon size using the css `font-size` property you should set the value of the attributes `width` and `height` equal to `1em` in the svg header.
 
-```xml
+``` xml
 <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" ...>
 ```
 
@@ -117,20 +116,18 @@ To control icon size using the css `font-size` property you should set the value
 
 To control the color of the svg icon using css, you need to prepare the svg document in a certain way (this applies only to single-color icons).
 
-1. You should get rid of paths with a non-zero `stroke`. To do this, all paths with a non-zero `stroke` should be converted to shapes. This can easily be done in a vector graphics editor such as [_Inkscape_](https://inkscape.org/).
-
+1. You should get rid of paths with a non-zero `stroke`. To do this, all paths with a non-zero `stroke` should be converted to shapes. This can easily be done in a vector graphics editor such as [*Inkscape*](https://inkscape.org/).
 2. You need to remove all `fill`, both attributes and style parameters in the svg document. In most cases, you can also delete all the `style` attributes. Value of fill svg icon will receive from the parent component.
-
 3. In the header of svg document you should specify the fill="currentColor":
 
-```xml
+``` xml
 <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" ...>
 ```
 
 After these transformations of svg document you can use the css `color` property to control the icon color.
 
-To optimize the resulting svg file (compression, removal of unnecessary information), you can use the [_svgo_](https://github.com/svg/svgo) utility.
+To optimize the resulting svg file (compression, removal of unnecessary information), you can use the [*svgo*](https://github.com/svg/svgo) utility.
 
 ## Source of inspiration
 
-The source of inspiration for writing this module, which creates components from custom svg icons, was the technology of [_vite-plugin-icons_](https://www.npmjs.com/package/vite-plugin-icons) with [_iconify_](https://icon-sets.iconify.design/) for free icon sets.
+The source of inspiration for writing this module, which creates components from custom svg icons, was the technology of [*vite-plugin-icons*](https://www.npmjs.com/package/vite-plugin-icons) with [*iconify*](https://icon-sets.iconify.design/) for free icon sets.

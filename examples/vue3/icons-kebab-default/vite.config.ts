@@ -13,5 +13,16 @@ export default defineConfig({
         viteCustomIconsResolver(),
       ],
     }),
-  ]
+  ],
+  build: {
+    minify: false,
+    rollupOptions: {
+      output: {
+        manualChunks: undefined,
+        file: 'dist/bundle.js',
+        format: 'iife',
+        dir: null,
+      },
+    },
+  },
 })

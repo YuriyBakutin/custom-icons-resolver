@@ -44,7 +44,7 @@ const scanConfigCaseNames = async () => {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>vite-custom-icons-resolver-test</title>
+    <title>custom-icons-resolver-test</title>
     <script src="./bundle.js" defer></script>
   </head>
   <body>

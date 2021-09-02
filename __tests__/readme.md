@@ -6,7 +6,7 @@ Autotests check if the build of the application is working correctly for differe
 
 Examples Vue 3 projects in the `examples/vue3` folder are used as set of configuration options to be tested. The fact of adding two custom SVG icons to the page is checked for each example.
 
-There is no need to separately test the build for Vue 2, since the vote-custom-icons-resolver plugin is set as a parameter of the vite-plugin-components module and does not contain code specific to Vue 2.
+There is no need to separately test the build for Vue 2, since the vote-custom-icons-resolver plugin is set as a parameter of the vite-plugin-components module and does not contain code specific to Vue 2. For the same reason, there are no tests for build systems other than Vite.
 
 You can add new projects to the folder, as well as delete them. The test program analyzes the contents of the `examples/vue3` and runs a test for each project automatically. To be used as a test object, each project must meet certain requirements.
 

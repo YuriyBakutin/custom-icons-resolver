@@ -1,47 +1,50 @@
-# vite-custom-icons-resolver
+# custom-icons-resolver
 
-Resolver for the Vite config file is designed to create elementary vue components from custom svg icons.
+Resolver for using with the `unplugin-vue-components` npm package is designed to create elementary vue components from custom svg icons.
 
-Vue 3 and Vue 2 are supported.
+**Vue 3** and **Vue 2** are supported, because they are supported by the `unplugin-vue-components` npm package.
 
-*Examples of Vue custom component-icon using* `vite-custom-icons-resolver`:
+The same applies to the project's build systems. **Vite**, **Rollup**, **Webpack** and others that `unplugin-vue-components` package supports are supported.
+
+`custom-icons-resolver` contains the necessary declarations to support TypeScript.
+
+*Examples of Vue custom component-icon using* `custom-icons-resolver`:
 
 ![Vue custom component-icon examples](img/svg-components.png)
 
 ## Install
 
-Before installing `vite-custom-icons-resolver`, you must install [*vite-plugin-components*](https://www.npmjs.com/package/vite-plugin-components), if it is not already installed.
+Before installing `custom-icons-resolver`, you must install [*unplugin-vue-components*](https://www.npmjs.com/package/unplugin-vue-components), if it is not already installed.
 
 ``` bash
-    npm i -D vite-plugin-components
+    npm i -D unplugin-vue-components
 ```
 
-Install the plugin `vite-custom-icons-resolver`
+Install the plugin `custom-icons-resolver`
 
 ``` bash
-    npm i -D vite-custom-icons-resolver
+    npm i -D custom-icons-resolver
 ```
 
 ## Configure vite.config.js
 
-Use with [vite-plugin-components](https://github.com/antfu/vite-plugin-components) (`>= v0.5.5`)
+Use with [unplugin-vue-components](https://github.com/antfu/unplugin-vue-components) (`>= v0.14.0`)
 
-`vite-custom-icons-resolver` itself works as a parameter of the `vue-plugins-components` and does not depend on whether the 2nd or 3rd version of Vue is used.
+Vite + Vue 3
 
-Vue 3
+``` ts
+// vite.config.ts (for Vue 3)
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import Components from 'unplugin-vue-components/vite'
+import { customIconsResolver } from 'custom-icons-resolver'
 
-``` js
-// vite.config.js (for Vue 3)
-import Vue from '@vitejs/plugin-vue'
-import Components from 'vite-plugin-components'
-import { viteCustomIconsResolver } from 'vite-custom-icons-resolver'
-
-export default {
+export default defineConfig({
   plugins: [
-    Vue(),
+    vue(),
     Components({
-      customComponentResolvers: [
-        viteCustomIconsResolver({
+      resolvers: [
+        customIconsResolver({
           prefix: 'custom-icon', // 'i' by default
           customIconsFolder: 'src/svg-icons', // 'src/icons' by default
         }),
@@ -51,14 +54,13 @@ export default {
 }
 ```
 
-Vue 2
-Vita supports Vue 2 with a `vite-plugin-vue2` plugin.
+Vite + Vue 2
 
 ``` js
 // vite.config.js (for Vue 2)
 import { createVuePlugin } from 'vite-plugin-vue2'
-import Components from 'vite-plugin-components'
-import { viteCustomIconsResolver } from 'vite-custom-icons-resolver'
+import Components from 'unplugin-vue-components'
+import { viteCustomIconsResolver } from 'custom-icons-resolver'
 
 export default {
   plugins: [
@@ -92,7 +94,7 @@ As mentioned above, each custom svg file must be placed in the folder specified 
 
 The name of custom svg file can be in the `PascalCase`, `camelCase` or `kebab-case`, and must correspond to the name of component without a prefix.
 
-Note that icons are mounted to page as inline `svg`. `vite-custom-icons-resolver` wraps svg content in `<template>` tag and saves the resulting component in the file with extension `.vue` in special service folder.
+Note that icons are mounted to page as inline `svg`. `custom-icons-resolver` wraps svg content in `<template>` tag and saves the resulting component in the file with extension `.vue` in special service folder.
 
 **Note**: Inline svg must not contain declaration tag
 `<?xml ... ?>`

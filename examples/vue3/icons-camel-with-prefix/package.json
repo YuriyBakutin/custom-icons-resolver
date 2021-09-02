@@ -14,8 +14,8 @@
     "@vue/compiler-sfc": "^3.0.5",
     "typescript": "^4.3.2",
     "vite": "^2.4.4",
-    "vite-custom-icons-resolver": "file:../../..",
-    "vite-plugin-components": "^0.13.2",
+    "custom-icons-resolver": "file:../../..",
+    "unplugin-vue-components": "^0.14.0",
     "vue-tsc": "^0.2.2"
   }
 }

@@ -57,7 +57,7 @@ const kebabToPascal = (kebab) => {
   return pascal
 }
 
-function viteCustomIconsResolver (options){
+function customIconsResolver (options){
   const defaultOptions = {
     prefix: 'i',
     iconsFolderPath: 'src/icons',
@@ -173,4 +173,4 @@ ${svgContent}
   }
 }
 
-exports.viteCustomIconsResolver = viteCustomIconsResolver
+exports.customIconsResolver = customIconsResolver

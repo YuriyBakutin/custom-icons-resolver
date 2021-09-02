@@ -92,7 +92,13 @@ For other build systems, `custom-icons-resolver` is used in the same way. It is 
 
 ## Requirements for custom svg components
 
-The name of custom svg components should be in the kebab case and look like this: `<prefix-name-of-svg-file />`. If `prefix` is empty string, the name of the component will be the same as the name of the corresponding svg file, converted to kebab like this: `<name-of-svg-file />`.
+The name of custom svg components  can be in the `PascalCase`, `camelCase` or `kebab-case` and look like this:
+
+* `<prefix-name-of-svg-file />`
+* `<prefixNameOfSvgFile>`
+* `<PrefixNameOfSvgFile>`
+
+If `prefix` is empty string, the name of the component will be the same as the name of the corresponding svg file, converted to the case (`PascalCase`, `camelCase` or `kebab-case`) in which the component name is specified.
 
 Custom svg components are global. They should not be registered and imported in the code of the parent component.
 

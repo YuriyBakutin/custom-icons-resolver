@@ -2,3 +2,4 @@ node_modules
 /tmp-icon-components/*.vue
 dist
 components.d.ts
+package-lock.json

@@ -79,7 +79,7 @@ export default {
 }
 ```
 
-### Others project's build systems - Vite, Rollup, Webpack etc.
+### Vite, Rollup, Webpack and others project's build systems
 
 For other build systems, `custom-icons-resolver` is used in the same way. It is specified as a resolver in the corresponding field of options of the `unplugin-vue-components` plugin. Information about using `unplugin-vue-components` plugin to a specific build system is available in its [repository](https://www.npmjs.com/package/unplugin-vue-components).
 
@@ -140,4 +140,4 @@ To optimize the resulting svg file (compression, removal of unnecessary informat
 
 ## Source of inspiration
 
-The source of inspiration for writing this module, which creates components from custom svg icons, was the technology of [*vite-plugin-icons*](https://www.npmjs.com/package/vite-plugin-icons) with [*iconify*](https://icon-sets.iconify.design/) for free icon sets.
+The source of inspiration for writing this module, which creates components from custom svg icons, was the technology of [*unplugin-icons*](https://github.com/antfu/unplugin-icons) with [*iconify*](https://icon-sets.iconify.design/) for free icon sets.

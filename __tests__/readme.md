@@ -12,13 +12,19 @@ You can add new projects to the folder, as well as delete them. The test program
 
 ## Project requirements in `examples/vue3`
 
-The project code should add two custom SVG icons to the page using a `vite-custom-icons-resolver` plugin. Their number is calculated during the test.
+The project code should add two custom SVG icons to the page using a `custom-icons-resolver` plugin. Their number is calculated during the test.
 
 ## Tests starting
 
 All commands for preparing for testing and testing itself are run from the root folder of the plugin.
 
-Before running tests, you need to install all dependencies for all projects in folder `examples/vue3` and build them
+Before running tests, you need to install the tools used for this
+
+```bash
+npm i
+```
+
+Also you need to install all dependencies for all projects in folder `examples/vue3` and build them
 
 ```bash
 npm run installAndBuild:allVue3

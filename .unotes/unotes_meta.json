@@ -1,0 +1,106 @@
+{
+  "name": "",
+  "isOrdered": true,
+  "folders": {
+    "examples": {
+      "name": "examples",
+      "isOrdered": true,
+      "folders": {
+        "vue2": {
+          "name": "vue2",
+          "isOrdered": true,
+          "folders": {
+            "icons-camel-without-prefix": {
+              "name": "icons-camel-without-prefix",
+              "isOrdered": true,
+              "folders": {},
+              "files": {}
+            }
+          },
+          "files": {
+            "readme": 0
+          }
+        },
+        "vue3": {
+          "name": "vue3",
+          "isOrdered": true,
+          "folders": {
+            "icons-camel-default": {
+              "name": "icons-camel-default",
+              "isOrdered": true,
+              "folders": {},
+              "files": {}
+            },
+            "icons-camel-with-prefix": {
+              "name": "icons-camel-with-prefix",
+              "isOrdered": true,
+              "folders": {},
+              "files": {}
+            },
+            "icons-camel-without-prefix": {
+              "name": "icons-camel-without-prefix",
+              "isOrdered": true,
+              "folders": {},
+              "files": {}
+            },
+            "icons-kebab-default": {
+              "name": "icons-kebab-default",
+              "isOrdered": true,
+              "folders": {},
+              "files": {}
+            },
+            "icons-kebab-with-prefix": {
+              "name": "icons-kebab-with-prefix",
+              "isOrdered": true,
+              "folders": {},
+              "files": {}
+            },
+            "icons-kebab-without-prefix": {
+              "name": "icons-kebab-without-prefix",
+              "isOrdered": true,
+              "folders": {},
+              "files": {}
+            },
+            "icons-pascal-default": {
+              "name": "icons-pascal-default",
+              "isOrdered": true,
+              "folders": {},
+              "files": {}
+            },
+            "icons-pascal-with-prefix": {
+              "name": "icons-pascal-with-prefix",
+              "isOrdered": true,
+              "folders": {},
+              "files": {}
+            },
+            "icons-pascal-without-prefix": {
+              "name": "icons-pascal-without-prefix",
+              "isOrdered": true,
+              "folders": {},
+              "files": {}
+            }
+          },
+          "files": {
+            "readme": 0
+          }
+        }
+      },
+      "files": {}
+    },
+    "img": {
+      "name": "img",
+      "isOrdered": true,
+      "folders": {},
+      "files": {}
+    },
+    "__tests__": {
+      "name": "__tests__",
+      "isOrdered": true,
+      "folders": {},
+      "files": {}
+    }
+  },
+  "files": {
+    "readme": 0
+  }
+}

@@ -6,7 +6,7 @@ Resolver for using with the `unplugin-vue-components` npm package is designed to
 
 The same applies to the project's build systems. **Vite**, **Rollup**, **Webpack** and others that `unplugin-vue-components` package supports are supported.
 
-`custom-icons-resolver` contains the necessary declarations to support TypeScript.
+`custom-icons-resolver` contains the necessary declarations to support **TypeScript**.
 
 *Examples of Vue custom component-icon using* `custom-icons-resolver`:
 
@@ -26,11 +26,13 @@ Install the plugin `custom-icons-resolver`
     npm i -D custom-icons-resolver
 ```
 
-## Configure vite.config.js
+## Usage
 
-Use with [unplugin-vue-components](https://github.com/antfu/unplugin-vue-components) (`>= v0.14.0`)
+### Vite
 
-Vite + Vue 3
+Configure vite.config (js or ts)
+
+Vite + Vue 3 example
 
 ``` ts
 // vite.config.ts (for Vue 3)
@@ -54,12 +56,12 @@ export default defineConfig({
 }
 ```
 
-Vite + Vue 2
+Vite + Vue 2 example
 
 ``` js
 // vite.config.js (for Vue 2)
 import { createVuePlugin } from 'vite-plugin-vue2'
-import Components from 'unplugin-vue-components'
+import Components from 'unplugin-vue-components/vite'
 import { viteCustomIconsResolver } from 'custom-icons-resolver'
 
 export default {
@@ -76,6 +78,12 @@ export default {
   ],
 }
 ```
+
+### Others project's build systems - Vite, Rollup, Webpack etc.
+
+For other build systems, `custom-icons-resolver` is used in the same way. It is specified as a resolver in the corresponding field of options of the `unplugin-vue-components` plugin. Information about using `unplugin-vue-components` plugin to a specific build system is available in its [repository](https://www.npmjs.com/package/unplugin-vue-components).
+
+### Parameters
 
 `viteCustomIconsResolver` has two optional parameters:
 

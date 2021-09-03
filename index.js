@@ -158,6 +158,9 @@ function customIconsResolver (options){
       }
     }
 
+    svgContent = svgContent.replace(/(<\?xml [^>]*>\n*)/ig, '')
+    svgContent = svgContent.replace(/(<!DOCTYPE [^>]*>\n*)/ig, '')
+
     const componentCode = `
 <template>
 <!-- This file was created automatically. You should not make changes to it! -->

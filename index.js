@@ -168,8 +168,7 @@ ${svgContent}
 </template>
 `
 
-    // const componentPath = `${componentsFolderPath}/${nameWithoutPrefix}.vue`
-    const componentPath = path.join(componentsFolderPath, `${nameWithoutPrefix}.vue`)
+    const componentPath = path.join(componentsFolderPath, `${name}.vue`)
     fs.writeFileSync(componentPath, componentCode)
 
     return '/' + componentPath

@@ -142,4 +142,4 @@ To optimize the resulting svg file (compression, removal of unnecessary informat
 
 ## Source of inspiration
 
-The source of inspiration for writing this module, which creates components from custom svg icons, was the technology of [*unplugin-icons*](https://github.com/antfu/unplugin-icons) with [*iconify*](https://icon-sets.iconify.design/) for free icon sets.
+The source of inspiration for writing this module, which creates components from custom svg icons, was the technology of [*unplugin-icons*](https://github.com/antfu/unplugin-icons) with [*iconify*](https://icon-sets.iconify.design/) for icon from [Iconify](https://icon-sets.iconify.design/) service.

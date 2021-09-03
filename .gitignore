@@ -3,3 +3,4 @@ node_modules
 dist
 components.d.ts
 package-lock.json
+icon-components

@@ -158,8 +158,8 @@ function customIconsResolver (options){
       }
     }
 
-    svgContent = svgContent.replace(/(<\?xml [^>]*>\n*)/ig, '')
-    svgContent = svgContent.replace(/(<!DOCTYPE [^>]*>\n*)/ig, '')
+    // Only the SVG tag is used. Without any titles
+    svgContent = svgContent.match(/(<svg (.*[\n])*<\/svg>)/ig).join('\n')
 
     const componentCode = `
 <template>

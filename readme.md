@@ -110,10 +110,6 @@ The name of custom svg file can be in the `PascalCase`, `camelCase` or `kebab-ca
 
 Note that icons are mounted to page as inline `svg`. `custom-icons-resolver` wraps svg content in `<template>` tag and saves the resulting component in the file with extension `.vue` in special service folder.
 
-**Note**: Inline svg must not contain declaration tag
-`<?xml ... ?>`
-This tag, if it is present in custom svg file, is necessary to delete manually.
-
 ### Managing size and color
 
 The svg in the component will be displayed exactly as in the file.

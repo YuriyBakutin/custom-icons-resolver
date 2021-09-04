@@ -39,7 +39,7 @@ Vite + Vue 3 example
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import Components from 'unplugin-vue-components/vite'
-import { customIconsResolver } from 'custom-icons-resolver'
+import customIconsResolver from 'custom-icons-resolver'
 
 export default defineConfig({
   plugins: [
@@ -62,14 +62,14 @@ Vite + Vue 2 example
 // vite.config.js (for Vue 2)
 import { createVuePlugin } from 'vite-plugin-vue2'
 import Components from 'unplugin-vue-components/vite'
-import { viteCustomIconsResolver } from 'custom-icons-resolver'
+import CustomIconsResolver from 'custom-icons-resolver'
 
 export default {
   plugins: [
     createVuePlugin(),
     Components({
       customComponentResolvers: [
-        viteCustomIconsResolver({
+        customIconsResolver({
           prefix: 'custom-icon', // 'i' by default
           iconsFolderPath: 'src/svg-icons', // 'src/icons' by default
         }),

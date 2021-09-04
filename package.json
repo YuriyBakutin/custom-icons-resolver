@@ -3,10 +3,11 @@
   "version": "1.0.4",
   "description": "Resolver for using with the unplugin-vue-components npm package is designed to create elementary vue components from custom svg icons.",
   "keywords": [
-    "vite",
+    "building",
     "vue",
     "svg",
-    "icon"
+    "icon",
+    "unplugin-vue-components"
   ],
   "license": "MIT",
   "repository": {
@@ -31,5 +32,8 @@
     "jest": "^27.1.0",
     "jsdom": "^17.0.0",
     "unplugin-vue-components": "^0.14.11"
+  },
+  "dependencies": {
+    "change-case": "^4.1.2"
   }
 }

@@ -57,7 +57,7 @@ const kebabToPascal = (kebab) => {
   return pascal
 }
 
-function customIconsResolver (options){
+module.exports = (options) => {
   const defaultOptions = {
     prefix: 'i',
     iconsFolderPath: 'src/icons',
@@ -174,5 +174,3 @@ ${svgContent}
     return '/' + componentPath
   }
 }
-
-exports.customIconsResolver = customIconsResolver

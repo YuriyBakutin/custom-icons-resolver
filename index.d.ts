@@ -1,6 +1,6 @@
 import ComponentResolver from 'unplugin-vue-components'
 
-export function customIconsResolver(options?: {
+export default function (options?: {
   prefix?: string,
   iconsFolderPath?: string,
-}): ComponentResolver
+}): typeof ComponentResolver

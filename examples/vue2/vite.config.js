@@ -1,6 +1,6 @@
 import { createVuePlugin } from 'vite-plugin-vue2'
 import Components from 'unplugin-vue-components/vite'
-import { customIconsResolver } from 'custom-icons-resolver'
+import customIconsResolver from 'custom-icons-resolver'
 
 export default {
   plugins: [

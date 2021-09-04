@@ -1,6 +1,6 @@
 {
   "name": "custom-icons-resolver",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Resolver for using with the unplugin-vue-components npm package is designed to create elementary vue components from custom svg icons.",
   "keywords": [
     "building",

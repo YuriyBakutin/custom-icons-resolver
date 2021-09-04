@@ -4,3 +4,5 @@ dist
 components.d.ts
 package-lock.json
 icon-components
+pnpm-lock.yaml
+yarn.lock

@@ -81,7 +81,7 @@ export default {
 
 ### Vite, Rollup, Webpack and others project's build systems
 
-For other build systems, `custom-icons-resolver` is used in the same way. It is specified as a resolver in the corresponding field of options of the `unplugin-vue-components` plugin. Information about using `unplugin-vue-components` plugin to a specific build system is available in its [repository](https://www.npmjs.com/package/unplugin-vue-components).
+For other build systems, `custom-icons-resolver` is used in the same way. It is specified as a resolver in the corresponding field of options of the `unplugin-vue-components` plugin. Information about using `unplugin-vue-components` plugin to a specific build system is available in its [documentation](https://github.com/antfu/unplugin-vue-components/blob/main/README.md).
 
 ### Parameters
 
@@ -100,15 +100,13 @@ The name of custom svg components  can be in the `PascalCase`, `camelCase` or `k
 
 If `prefix` is empty string, the name of the component will be the same as the name of the corresponding svg file, converted to the case (`PascalCase`, `camelCase` or `kebab-case`) in which the component name is specified.
 
-Custom svg components are global. They should not be registered and imported in the code of the parent component.
+Custom svg components should not be registered and imported in the code of the parent or root component.
 
 ## Requirements for svg files
 
 As mentioned above, each custom svg file must be placed in the folder specified via `customIconsFolder` parameter in the `vite.config.js` file or, if this parameter is skipped, in the `src/icons` folder by default.
 
 The name of custom svg file can be in the `PascalCase`, `camelCase` or `kebab-case`, and must correspond to the name of component without a prefix.
-
-Note that icons are mounted to page as inline `svg`. `custom-icons-resolver` wraps svg content in `<template>` tag and saves the resulting component in the file with extension `.vue` in special service folder.
 
 ### Managing size and color
 

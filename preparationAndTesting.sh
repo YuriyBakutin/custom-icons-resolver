@@ -1,6 +1,8 @@
 #!/bin/bash
 
-totalStart=$(date +%s)
+startTime=$(date +%s)
+
+npm i
 
 cd examples/vue3
 
@@ -11,8 +13,12 @@ done < <(find . -mindepth 1 -maxdepth 1 -type d -print0)
 
 for item in ${folderlist[*]}
 do
+  printf "\nnpm install in %s\n" $item
   cd $item
+  rm -rf node_modules
+  npm i
   printf "\nnpm run build in %s" $item
+  rm -rf dist
   startBuilding=$(date +%s)
   npm run build
   endBuilding=$(date +%s)
@@ -21,7 +27,15 @@ do
   cd ../
 done
 
-totalEnd=$(date +%s)
-totalTime=$(($totalEnd - $totalStart))
+preparationEndTime=$(date +%s)
+preparationTime=$(($preparationEndTime - $startTime))
 echo ""
-echo "Total execution time $totalTime s"
+echo "Total preparation time $preparationTime s"
+
+cd ../../
+./node_modules/jest/bin/jest.js
+
+totalEndTime=$(date +%s)
+totalTime=$(($totalEndTime - $startTime))
+echo ""
+echo "Total preparation time $totalTime s"

@@ -20,17 +20,16 @@
   "homepage": "https://github.com/YuriyBakutin/custom-icons-resolver",
   "bugs": "https://github.com/YuriyBakutin/custom-icons-resolver/issues",
   "scripts": {
-    "test": "jest",
-    "install:allVue3": "./installAllVue3Examples.sh",
-    "build:allVue3": "./buildAllVue3Examples.sh",
-    "install:vue2": "cd examples/vue2 && npm install",
-    "installAndBuild:allVue3": "./installAndBuildAllVue3Examples.sh",
-    "dev:Vue2": "npm -C examples/vue2 run dev",
-    "dev:Vue3": "npm -C examples/vue3/icons-kebab-with-prefix run dev"
+    "test": "./preparationAndTesting.sh",
+    "clear": "./serviceFoldersRemoval.sh"
   },
   "devDependencies": {
     "jest": "^27.1.0",
-    "jsdom": "^17.0.0",
-    "unplugin-vue-components": "^0.14.11"
-  }
+    "jsdom": "^17.0.0"
+  },
+  "files": [
+    "index.js",
+    "index.ts",
+    "LICENSE"
+  ]
 }

@@ -14,7 +14,7 @@ export default defineConfig({
           iconsFolderPath: 'src/svg-icons',
         }),
       ],
-    })
+    }),
   ],
   build: {
     minify: false,

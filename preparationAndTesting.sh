@@ -33,9 +33,21 @@ echo ""
 echo "Total preparation time $preparationTime s"
 
 cd ../../
+
+startLintingTime=$(date +%s)
+
+echo ""
+echo "Linting start"
+
+./node_modules/eslint/bin/eslint.js --fix --ignore-path .gitignore .
+
+endLintingTime=$(date +%s)
+lintingTime=$(($endLintingTime - $startLintingTime))
+echo "Linting time $lintingTime s"
+
 ./node_modules/jest/bin/jest.js
 
 totalEndTime=$(date +%s)
 totalTime=$(($totalEndTime - $startTime))
 echo ""
-echo "Total preparation time $totalTime s"
+echo "Total execute time $totalTime s"

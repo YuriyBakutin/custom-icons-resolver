@@ -9,7 +9,7 @@ export default {
       resolvers: [
         customIconsResolver({
           prefix: 'custom-icon',
-          iconsFolderPath: 'icons-camel-without-prefix'
+          iconsFolderPath: 'icons-camel-without-prefix',
         }),
       ],
     }),

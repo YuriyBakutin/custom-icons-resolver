@@ -7,10 +7,7 @@ module.exports = (options) => {
     iconsFolderPath: 'src/icons',
   }
 
-  const {
-    prefix,
-    iconsFolderPath,
-  } = { ...defaultOptions, ...(options || {}) }
+  const { prefix, iconsFolderPath } = { ...defaultOptions, ...(options || {}) }
 
   let componentCounter = 0
 
@@ -27,15 +24,19 @@ module.exports = (options) => {
       clearComponentsFolder(componentsFolderPath)
     }
 
-    const nameWithoutPrefixInPascal = getNameWithoutPrefixInPascal(
-      { prefix, name },
-    )
+    const nameWithoutPrefixInPascal = getNameWithoutPrefixInPascal({
+      prefix,
+      name,
+    })
 
     if (!nameWithoutPrefixInPascal) {
       return null
     }
 
-    const svgContent = getSvgContent({ iconsFolderPath, nameWithoutPrefixInPascal })
+    const svgContent = getSvgContent({
+      iconsFolderPath,
+      nameWithoutPrefixInPascal,
+    })
 
     if (!svgContent) {
       return null
@@ -54,10 +55,12 @@ const clearComponentsFolder = (componentsFolderPath) => {
   let files
   let tmpFolderExists = true
 
-  try { // Checking the folder for existence
+  try {
+    // Checking the folder for existence
     files = fs.readdirSync(componentsFolderPath)
   } catch (error) {
-    if (error.code !== 'ENOENT') { // The folder does not exist
+    if (error.code !== 'ENOENT') {
+      // The folder does not exist
       throw error
     } else {
       tmpFolderExists = false
@@ -97,11 +100,16 @@ const getSvgContent = ({ iconsFolderPath, nameWithoutPrefixInPascal }) => {
   let svgContent
 
   // Icon path with file name in PascalCase
-  const iconPath = path.join(iconsFolderPath, `${nameWithoutPrefixInPascal}.svg`)
+  const iconPath = path.join(
+    iconsFolderPath,
+    `${nameWithoutPrefixInPascal}.svg`,
+  )
 
-  try { // Search for a file by name in the PascalCase
+  try {
+    // Search for a file by name in the PascalCase
     svgContent = fs.readFileSync(iconPath, 'utf8')
-  } catch (error) { // File in PascalCase not found
+  } catch (error) {
+    // File in PascalCase not found
     if (error.code !== 'ENOENT') {
       throw error
     }
@@ -111,9 +119,11 @@ const getSvgContent = ({ iconsFolderPath, nameWithoutPrefixInPascal }) => {
       `${firstLetterToLowerCase(nameWithoutPrefixInPascal)}.svg`,
     )
 
-    try { // Search for a file by name in the camelCase
+    try {
+      // Search for a file by name in the camelCase
       svgContent = fs.readFileSync(iconPathInCamel, 'utf8')
-    } catch (error) { // File in camelCase not found
+    } catch (error) {
+      // File in camelCase not found
       if (error.code !== 'ENOENT') {
         throw error
       }
@@ -123,9 +133,11 @@ const getSvgContent = ({ iconsFolderPath, nameWithoutPrefixInPascal }) => {
         `${pascalToKebab(nameWithoutPrefixInPascal)}.svg`,
       )
 
-      try { // Search for a file by name in the kebab-case
+      try {
+        // Search for a file by name in the kebab-case
         svgContent = fs.readFileSync(iconPathKebab, 'utf8')
-      } catch (error) { // File in kebab-case not found
+      } catch (error) {
+        // File in kebab-case not found
         if (error.code !== 'ENOENT') {
           throw error
         }
@@ -135,10 +147,10 @@ const getSvgContent = ({ iconsFolderPath, nameWithoutPrefixInPascal }) => {
     }
   }
   // Only the SVG tag is used. Without any titles
-  return svgContent.match(/(<svg (.*[\n])*<\/svg>)/ig).join('\n')
+  return svgContent.match(/(<svg (.*[\n])*<\/svg>)/gi).join('\n')
 }
 
-const getComponentCode = svgContent => `
+const getComponentCode = (svgContent) => `
 <template>
 <!-- This file was created automatically. You should not make changes to it! -->
 ${svgContent}

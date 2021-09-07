@@ -2,5 +2,11 @@
   "cSpell.words": [
     "mediaeventservices",
     "unplugin"
-  ]
+  ],
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true,
+    "source.fixAll.eslint": true
+  },
+  "eslint.autoFixOnSave": true,
 }

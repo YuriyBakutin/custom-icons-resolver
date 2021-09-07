@@ -1,8 +1,8 @@
 module.exports = {
   env: {
-    'es6': true,
-    'browser': true,
-    'node': true,
+    es6: true,
+    browser: true,
+    node: true,
     'jest/globals': true,
   },
   extends: [
@@ -12,8 +12,9 @@ module.exports = {
     'plugin:eslint-comments/recommended',
     'plugin:jsonc/recommended-with-jsonc',
     'plugin:@typescript-eslint/recommended',
+    'prettier',
   ],
-  plugins: ['html', 'unicorn', 'jest'],
+  plugins: ['html', 'unicorn', 'jest', 'prettier'],
   settings: {
     'import/resolver': {
       node: { extensions: ['.js', '.mjs', '.ts', '.d.ts'] },
@@ -24,7 +25,7 @@ module.exports = {
       files: ['*.json', '*.json5'],
       parser: 'jsonc-eslint-parser',
       rules: {
-        'quotes': ['error', 'double'],
+        // 'quotes': ['error', 'double'],
         'quote-props': ['error', 'always'],
         'comma-dangle': ['error', 'never'],
       },
@@ -84,6 +85,19 @@ module.exports = {
     },
   ],
   rules: {
+    'prettier/prettier': [
+      'error',
+      {
+        semi: false,
+        singleQuote: true,
+        trailingComma: 'all',
+        arrowParens: 'always',
+        'max-len': ['error', 140, 2],
+        tabWidth: 2,
+        useTabs: false,
+      },
+    ],
+
     // import
     'import/order': 'error',
     'import/first': 'error',
@@ -92,17 +106,17 @@ module.exports = {
     'import/no-absolute-path': 'off',
 
     // Common
-    'semi': ['error', 'never'],
-    'curly': ['error'],
-    'quotes': ['error', 'single'],
-    'quote-props': ['error', 'consistent-as-needed'],
+    // semi: ['error', 'never'],
+    curly: ['error'],
+    quotes: ['error', 'single'],
+    'quote-props': 'off',
     'no-unused-vars': 'warn',
     'no-redeclare': 'off',
     'no-param-reassign': 'off',
     'array-bracket-spacing': ['error', 'never'],
     'brace-style': ['error'],
     'block-spacing': ['error', 'always'],
-    'camelcase': 'off',
+    camelcase: 'off',
     'comma-spacing': ['error', { before: false, after: true }],
     'comma-style': ['error', 'last'],
     'comma-dangle': ['error', 'always-multiline'],
@@ -113,7 +127,11 @@ module.exports = {
     'no-cond-assign': ['error', 'always'],
     'func-call-spacing': ['off', 'never'],
     'key-spacing': ['error', { beforeColon: false, afterColon: true }],
-    'indent': ['error', 2, { SwitchCase: 1, VariableDeclarator: 1, outerIIFEBody: 1 }],
+    indent: [
+      'error',
+      2,
+      { SwitchCase: 1, VariableDeclarator: 1, outerIIFEBody: 1 },
+    ],
     'no-restricted-syntax': [
       'error',
       'DebuggerStatement',
@@ -123,7 +141,14 @@ module.exports = {
     ],
     'object-curly-spacing': ['error', 'always'],
     'no-return-await': 'off',
-    'space-before-function-paren': ['error', 'never'],
+    'space-before-function-paren': [
+      'error',
+      {
+        anonymous: 'never',
+        named: 'never',
+        asyncArrow: 'ignore',
+      },
+    ],
 
     // es6
     'no-var': 'error',
@@ -153,15 +178,15 @@ module.exports = {
     'prefer-spread': 'error',
     'prefer-template': 'error',
     'template-curly-spacing': 'error',
-    'arrow-parens': ['error', 'as-needed', { requireForBlockBody: true }],
+    'arrow-parens': 'off',
     'generator-star-spacing': 'off',
 
     // best-practice
     'array-callback-return': 'error',
     'block-scoped-var': 'error',
     'consistent-return': 'off',
-    'complexity': ['off', 11],
-    'eqeqeq': ['error', 'allow-null'],
+    complexity: ['off', 11],
+    eqeqeq: ['error', 'allow-null'],
     'no-alert': 'warn',
     'no-case-declarations': 'error',
     'no-multi-spaces': 'error',
@@ -205,8 +230,11 @@ module.exports = {
 
     // TS
     'no-useless-constructor': 'off',
-    '@typescript-eslint/semi': ['error', 'never'],
-    '@typescript-eslint/member-delimiter-style': ['error', { multiline: { delimiter: 'none' } }],
+    // '@typescript-eslint/semi': ['error', 'never'],
+    '@typescript-eslint/member-delimiter-style': [
+      'error',
+      { multiline: { delimiter: 'none' } },
+    ],
     '@typescript-eslint/type-annotation-spacing': ['error', {}],
 
     '@typescript-eslint/indent': ['error', 2],
@@ -233,8 +261,9 @@ module.exports = {
     'vue/no-v-html': 'off',
 
     // JSON
-    'jsonc/sort-keys': ['error',
-    // For example, a definition for package.json
+    'jsonc/sort-keys': [
+      'error',
+      // For example, a definition for package.json
       {
         pathPattern: '^$', // Hits the root properties
         order: [
@@ -249,7 +278,7 @@ module.exports = {
         pathPattern: '^(?:dev|peer|optional|bundled)?[Dd]ependencies$',
         order: { type: 'asc' },
       },
-    // ...
+      // ...
     ],
   },
 }

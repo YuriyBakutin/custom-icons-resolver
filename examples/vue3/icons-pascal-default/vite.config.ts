@@ -8,9 +8,7 @@ export default defineConfig({
   plugins: [
     vue(),
     Components({
-      resolvers: [
-        customIconsResolver(),
-      ],
+      resolvers: [customIconsResolver()],
     }),
   ],
   build: {

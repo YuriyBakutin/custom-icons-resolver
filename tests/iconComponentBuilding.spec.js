@@ -4,14 +4,9 @@ global.TextEncoder = util.TextEncoder
 const fs = require('fs')
 const path = require('path')
 const { JSDOM } = require('jsdom')
-// const { JSDOM } = jsdom
 
-const examplesVue3Folder = path.join(__dirname, '../', 'examples', 'vue3')
-
-const configCaseNames = fs.readdirSync(examplesVue3Folder)
-console.log('configCaseNames: ', configCaseNames)
-
-// let document
+const casesFolderPath = path.join(__dirname, 'casesBuilding')
+const configCaseNames = fs.readdirSync(casesFolderPath)
 
 const domPreparation = (htmlPath) => {
   return new Promise((resolve, reject) => {
@@ -27,7 +22,7 @@ const domPreparation = (htmlPath) => {
   })
 }
 
-const scanConfigCaseNames = async () => {
+const scanTestingProjectNames = async () => {
   describe('Building for different configuration cases', () => {
     for (const configCaseName of configCaseNames) {
       console.log('configCaseName: ', configCaseName)
@@ -37,7 +32,7 @@ const scanConfigCaseNames = async () => {
       }
 
       const htmlPath = path.join(
-        examplesVue3Folder,
+        casesFolderPath,
         configCaseName,
         'dist',
         'index.html',
@@ -62,14 +57,9 @@ const scanConfigCaseNames = async () => {
         const document = await domPreparation(htmlPath)
 
         expect(document.getElementsByTagName('svg').length).toBe(2)
-
-        // console.log(
-        //   'window.document.getElementsByTagName("svg").length: ',
-        //   document.getElementsByTagName('svg').length,
-        // )
       })
     }
   })
 }
 
-scanConfigCaseNames()
+scanTestingProjectNames()

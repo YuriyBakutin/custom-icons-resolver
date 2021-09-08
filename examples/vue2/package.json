@@ -9,7 +9,7 @@
     "vue": "^2.6.14"
   },
   "devDependencies": {
-    "custom-icons-resolver": "file:../..",
+    "custom-icons-resolver": "^1.0.9",
     "unplugin-vue-components": "^0.14.0",
     "vite": "^2.5.0",
     "vite-plugin-vue2": "^1.8.1",

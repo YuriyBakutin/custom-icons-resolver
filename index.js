@@ -1,4 +1,5 @@
 const fs = require('fs')
+
 const path = require('path')
 
 module.exports = (options) => {
@@ -42,7 +43,10 @@ module.exports = (options) => {
       return null
     }
 
-    const componentCode = getComponentCode(svgContent)
+    const componentCode = getComponentCode(
+      // extracting only the svg tag from the svg content
+      svgContent?.match(/(<svg(.*[\n])*<\/svg>)/gi).join('\n'),
+    )
 
     const componentPath = path.join(componentsFolderPath, `${name}.vue`)
     fs.writeFileSync(componentPath, componentCode)
@@ -97,57 +101,46 @@ const getNameWithoutPrefixInPascal = ({ prefix, name }) => {
 }
 
 const getSvgContent = ({ iconsFolderPath, nameWithoutPrefixInPascal }) => {
-  let svgContent
-
-  // Icon path with file name in PascalCase
-  const iconPath = path.join(
+  const iconPathInPascal = path.join(
     iconsFolderPath,
     `${nameWithoutPrefixInPascal}.svg`,
   )
 
   try {
-    // Search for a file by name in the PascalCase
-    svgContent = fs.readFileSync(iconPath, 'utf8')
+    return fs.readFileSync(iconPathInPascal, 'utf8')
   } catch (error) {
-    // File in PascalCase not found
     if (error.code !== 'ENOENT') {
       throw error
     }
+  }
 
-    const iconPathInCamel = path.join(
-      iconsFolderPath,
-      `${firstLetterToLowerCase(nameWithoutPrefixInPascal)}.svg`,
-    )
+  const iconPathInCamel = path.join(
+    iconsFolderPath,
+    `${firstLetterToLowerCase(nameWithoutPrefixInPascal)}.svg`,
+  )
 
-    try {
-      // Search for a file by name in the camelCase
-      svgContent = fs.readFileSync(iconPathInCamel, 'utf8')
-    } catch (error) {
-      // File in camelCase not found
-      if (error.code !== 'ENOENT') {
-        throw error
-      }
-
-      const iconPathKebab = path.join(
-        iconsFolderPath,
-        `${pascalToKebab(nameWithoutPrefixInPascal)}.svg`,
-      )
-
-      try {
-        // Search for a file by name in the kebab-case
-        svgContent = fs.readFileSync(iconPathKebab, 'utf8')
-      } catch (error) {
-        // File in kebab-case not found
-        if (error.code !== 'ENOENT') {
-          throw error
-        }
-
-        return null
-      }
+  try {
+    return fs.readFileSync(iconPathInCamel, 'utf8')
+  } catch (error) {
+    if (error.code !== 'ENOENT') {
+      throw error
     }
   }
-  // Only the SVG tag is used. Without any titles
-  return svgContent.match(/(<svg(.*[\n])*<\/svg>)/gi).join('\n')
+
+  const iconPathKebab = path.join(
+    iconsFolderPath,
+    `${pascalToKebab(nameWithoutPrefixInPascal)}.svg`,
+  )
+
+  try {
+    return fs.readFileSync(iconPathKebab, 'utf8')
+  } catch (error) {
+    if (error.code !== 'ENOENT') {
+      throw error
+    }
+  }
+
+  return null
 }
 
 const getComponentCode = (svgContent) => `

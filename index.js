@@ -147,7 +147,7 @@ const getSvgContent = ({ iconsFolderPath, nameWithoutPrefixInPascal }) => {
     }
   }
   // Only the SVG tag is used. Without any titles
-  return svgContent.match(/(<svg (.*[\n])*<\/svg>)/gi).join('\n')
+  return svgContent.match(/(<svg(.*[\n])*<\/svg>)/gi).join('\n')
 }
 
 const getComponentCode = (svgContent) => `

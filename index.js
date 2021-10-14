@@ -151,16 +151,11 @@ ${svgContent}
 `
 
 const firstLetterToLowerCase = (word) => {
-  if (!word) {
+  if (!word || word.length === 0) {
     return ''
   }
 
   let word_ = word[0].toLowerCase()
-
-  if (word.length === 1) {
-    return word_
-  }
-
   word_ += word.slice(1)
 
   return word_
